@@ -1,3 +1,5 @@
 **HackerRank Python Basic Skill Test**
 
-HackerRank's Python Basic Skill Test included questions about Vending Machine and Shopping Cart. I have uploaded both the questions and the code as separate files.
+Questions and solutions for HackerRank's Python Basic Skill Test, including Vending Machine and Shopping Cart questions, have been uploaded as separate files. 
+Please note that the expected input file is a .txt file.
+You can also download the file and run it in your browser to test it.
