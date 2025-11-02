@@ -1,0 +1,72 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+class VendingMachine:
+    """
+    A class to represent a simple vending machine.
+    """
+    def __init__(self, num_items, item_price):
+        """
+        Initializes the VendingMachine with a number of items and a price per item.
+        
+        Args:
+            num_items (int): The number of items available in the machine.
+            item_price (int): The cost of a single item.
+        """
+        self.num_items = num_items
+        self.item_price = item_price
+
+    def buy (self, req_items, money):
+        """
+        Processes a purchase request.
+
+        Args:
+            req_items (int): The number of items requested by the customer.
+            money (int): The amount of money provided by the customer.
+
+        Returns:
+            int: The change to be given back to the customer.
+
+        Raises:
+            ValueError: If there are not enough items or the money is insufficient.
+        """
+        # Check if there are enough items in stock
+        if req_items > self.num_items:
+            raise ValueError ("Not enough items in the machine")
+
+        # Calculate the total cost for the requested items
+        total_cost = req_items * self.item_price
+
+        # Check if the provided money is sufficient
+        if money < total_cost:
+            raise ValueError("Not enough coins")
+
+        # If the purchase is valid, update the machine's inventory
+        self.num_items -= req_items
+
+        #Calculate and return the change
+        change = money - total_cost
+        return change
+
+if __name__ == '__main__':
+    # The following code is the provided stub to test the implementation
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    num_items, item_coins = map(int, input().split())
+    machine = VendingMachine(num_items, item_coins)
+
+    n = int(input())
+for _ in range(n):
+    num_items, num_coins = map(int, input().split())
+    try:
+       change = machine.buy(num_items, num_coins)
+       fptr.write(str (change) + "\n")
+    except ValueError as e:
+       fptr.write(str(e) + "\n")
+
+fptr.close()
